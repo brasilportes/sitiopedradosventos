@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Veja as datas livres do Sítio Pedra dos Ventos, em Domingos Martins (ES), calcule o valor na hora e reserve pelo WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sítio Pedra dos Ventos · Datas e valores">
+<meta property="og:description" content="Escolha suas datas, veja o valor na hora e reserve pelo WhatsApp. Domingos Martins · Montanhas Capixabas.">
+<meta property="og:image" content="https://brasilportes.github.io/sitiopedradosventos/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="theme-color" content="#425B3B">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Reservas Pedra dos Ventos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: uma coluna de app no celular (até 560px), cabeçalho da marca, calendário como peça central, resumo com botão do WhatsApp logo abaixo */
+:root{
+  --bg:#EEF2E7; --surface:#FFFFFF; --ink:#1F2E1C; --muted:#5D6B57; --line:#D6DDCC;
+  --forest:#425B3B; --on-forest:#FFFFFF; --sage:#9BC690; --sage-soft:#DCEBD4; --sage-ink:#1F2E1C;
+  --busy:#E4E1D8; --busy-ink:#8D8A80; --mustard:#D8CB77; --mustard-ink:#2A3A26; --teal:#2F9DA9;
+  --wa:#1F8A4C; --on-wa:#FFFFFF; --no:#425B3B; --no-bg:#E4E1D8;
+  --f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Nunito","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141C15; --surface:#1E2A20; --ink:#E9F0E3; --muted:#A3B39C; --line:#33443A;
+  --forest:#2C3F2A; --on-forest:#F2F6EE; --sage:#7FB574; --sage-soft:#2B3D2B; --sage-ink:#0F1A0E;
+  --busy:#262F27; --busy-ink:#6E7A6C; --mustard:#D8CB77; --mustard-ink:#1E2A1B; --teal:#5CC3CE;
+  --wa:#25A55C; --on-wa:#FFFFFF; --no:#8FA886; --no-bg:#262F27; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141C15; --surface:#1E2A20; --ink:#E9F0E3; --muted:#A3B39C; --line:#33443A;
+  --forest:#2C3F2A; --on-forest:#F2F6EE; --sage:#7FB574; --sage-soft:#2B3D2B; --sage-ink:#0F1A0E;
+  --busy:#262F27; --busy-ink:#6E7A6C; --mustard:#D8CB77; --mustard-ink:#1E2A1B; --teal:#5CC3CE;
+  --wa:#25A55C; --on-wa:#FFFFFF; --no:#8FA886; --no-bg:#262F27; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 40px}
+.app{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+h1,h2{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+
+.brand{background:var(--forest);color:var(--on-forest);border-radius:24px;padding:18px;display:flex;align-items:center;gap:16px}
+.brand img{width:96px;height:auto;flex:none}
+.brand h1{font-size:clamp(1.45rem,5.6vw,1.9rem);line-height:1.05}
+.brand p{margin:6px 0 0;font-size:.92rem;opacity:.85}
+.brand .tag{display:inline-block;margin-top:10px;background:var(--mustard);color:var(--mustard-ink);font-weight:800;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:99px;white-space:nowrap}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px}
+.label{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+
+.pkgs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pkg{border:2px solid var(--line);background:transparent;border-radius:14px;padding:10px 12px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:2px;min-width:0}
+.pkg b{font-family:var(--f-display);font-size:1.05rem}
+.pkg span{font-size:.8rem;color:var(--muted)}
+.pkg[aria-pressed="true"]{border-color:var(--forest);background:var(--sage-soft)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .pkg[aria-pressed="true"]{border-color:var(--sage)}}
+:root[data-theme="dark"] .pkg[aria-pressed="true"]{border-color:var(--sage)}
+
+.cal-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.cal-head h2{font-size:1.35rem}
+.nav{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--surface);cursor:pointer;font-size:1.2rem;font-weight:800;display:grid;place-items:center}
+.nav:disabled{opacity:.35;cursor:default}
+.wk,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.wk div{text-align:center;font-size:.72rem;font-weight:800;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;padding-bottom:4px}
+.d{aspect-ratio:1;max-width:100%;border-radius:10px;border:0;padding:0;position:relative;display:grid;place-items:center;font-weight:800;font-size:1rem;font-variant-numeric:tabular-nums;cursor:pointer;background:var(--sage-soft);color:var(--sage-ink)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .d.free{color:var(--ink)}}
+:root[data-theme="dark"] .d.free{color:var(--ink)}
+.d.empty{background:transparent;cursor:default}
+.d.busy{background:var(--busy);color:var(--busy-ink);text-decoration:line-through;text-decoration-thickness:2px;cursor:default}
+.d.past{background:transparent;color:var(--busy-ink);opacity:.55;cursor:default}
+.d.start{box-shadow:inset 0 0 0 2px var(--forest)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .d.start{box-shadow:inset 0 0 0 2px var(--sage)}}
+:root[data-theme="dark"] .d.start{box-shadow:inset 0 0 0 2px var(--sage)}
+.d.sel{background:var(--forest);color:var(--on-forest);box-shadow:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .d.sel{background:var(--sage);color:var(--sage-ink)}}
+:root[data-theme="dark"] .d.sel{background:var(--sage);color:var(--sage-ink)}
+.d .hol{position:absolute;bottom:5px;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:var(--teal)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:12px;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:14px;height:14px;border-radius:4px;display:inline-block}
+.hint{margin:12px 0 0;font-size:.88rem;color:var(--muted);min-height:1.3em}
+.hint.warn{color:var(--ink);font-weight:700}
+
+.people{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.row b{display:block}
+.row small{color:var(--muted);font-size:.82rem}
+.step{display:flex;align-items:center;gap:10px}
+.step button{width:40px;height:40px;border-radius:50%;border:2px solid var(--line);background:transparent;font-size:1.3rem;font-weight:800;cursor:pointer;line-height:1}
+.step button:disabled{opacity:.3;cursor:default}
+.step output{min-width:1.5ch;text-align:center;font-weight:800;font-size:1.2rem;font-variant-numeric:tabular-nums}
+.cap{font-size:.8rem;color:var(--muted);margin:2px 0 0}
+
+.sum{background:var(--forest);color:var(--on-forest);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.sum .when{font-size:.95rem;opacity:.9;margin:0}
+.price{font-family:var(--f-display);font-size:2.3rem;font-weight:800;line-height:1;margin:0;font-variant-numeric:tabular-nums}
+.price small{display:block;font-family:var(--f-body);font-size:.85rem;font-weight:600;opacity:.8;margin-top:6px;line-height:1.35}
+.wa{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--wa);color:var(--on-wa);text-decoration:none;font-weight:800;font-size:1.05rem;padding:14px 16px;border-radius:14px}
+.wa svg{width:22px;height:22px;flex:none}
+.phone{display:flex;align-items:center;justify-content:center;gap:10px;font-size:.88rem;opacity:.9;flex-wrap:wrap}
+.phone span{user-select:all;font-weight:700;font-variant-numeric:tabular-nums}
+.copy{background:transparent;border:1px solid currentColor;border-radius:99px;padding:3px 10px;font-size:.78rem;font-weight:700;cursor:pointer;color:inherit}
+
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+td{padding:8px 0;border-top:1px solid var(--line)}
+td:last-child{text-align:right;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tblh{font-family:var(--f-display);font-size:1.05rem;margin:14px 0 2px}
+.tblh:first-of-type{margin-top:0}
+.tbls{font-size:.82rem;color:var(--muted);margin:0 0 6px}
+.note{font-size:.82rem;color:var(--muted);margin:12px 0 0}
+.foot{text-align:center;font-size:.8rem;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.d,.pkg,.wa{transition:background-color .15s,box-shadow .15s,border-color .15s}}
+.d.out{background:var(--forest);color:var(--on-forest);box-shadow:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .d.out{background:var(--sage);color:var(--sage-ink)}}
+:root[data-theme="dark"] .d.out{background:var(--sage);color:var(--sage-ink)}
+.promo{margin:0 0 12px;background:var(--mustard);color:var(--mustard-ink);border-radius:12px;padding:8px 12px;font-size:.9rem}
+.price .old{display:block;font-family:var(--f-body);font-size:1rem;font-weight:700;opacity:.7;margin-bottom:4px}
+.tw{overflow-x:auto}
+.t3 th{font-size:.75rem;font-weight:800;color:var(--muted);text-align:right;padding:4px 0 6px 8px;white-space:nowrap}
+.t3 td{text-align:right;font-weight:800;padding-left:8px;white-space:nowrap}
+.t3 td:first-child{text-align:left;font-weight:400;padding-left:0}
+.rules{margin:14px 0 0;padding-left:18px;font-size:.88rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+
+/* compacto + barra fixa */
+body{padding-block:12px 120px}
+.app{gap:10px}
+.brand{padding:10px 14px;border-radius:18px;gap:12px}
+.brand img{width:52px}
+.bt{min-width:0}
+.brand h1{font-size:clamp(1.05rem,4.6vw,1.35rem);line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand p{margin:2px 0 0;font-size:.72rem;line-height:1.3}
+.card{padding:12px;border-radius:16px}
+.ppl{display:flex;justify-content:space-between;gap:6px;padding:10px 12px}
+.pc{display:flex;align-items:center;gap:6px;font-weight:800;font-size:.85rem}
+.pc .step{gap:4px}
+.ppl{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 4px}
+.ppl .pc{flex-direction:column;gap:4px;font-size:.74rem;text-align:center;min-width:0}
+.pnote{grid-column:1/-1;margin:2px 0 0;font-size:.74rem;color:var(--muted);text-align:center}
+.pc .step button{width:30px;height:30px;font-size:1rem;border-width:1.5px}
+.pc .step output{font-size:1.05rem}
+.cal-head{margin-bottom:6px}
+.cal-head h2{font-size:1.15rem}
+.nav{width:36px;height:36px}
+.wk,.grid{gap:4px}
+.d{aspect-ratio:1.18;font-size:.95rem;border-radius:9px}
+.d .hol{bottom:3px}
+.legend{margin-top:8px;font-size:.74rem;gap:4px 12px}
+.sw{width:12px;height:12px}
+.hint{margin:6px 0 0;font-size:.8rem;min-height:1.2em}
+.phone{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--muted);margin-top:14px;flex-wrap:wrap}
+.phone span{user-select:all;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.copy{background:transparent;border:1px solid var(--line);border-radius:99px;padding:3px 10px;font-size:.78rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--forest);color:var(--on-forest);
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  box-shadow:0 -6px 18px rgba(0,0,0,.18)}
+.bi{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.info{flex:1;min-width:0}
+.bar .price{font-family:var(--f-display);font-size:1.6rem;font-weight:800;line-height:1.1;margin:0;font-variant-numeric:tabular-nums}
+.bar .price.soft{font-size:1.1rem}
+.bar .price .old{font-family:var(--f-body);font-size:.85rem;font-weight:700;opacity:.7;display:inline;margin:0 4px 0 0}
+.bar .when{margin:2px 0 0;font-size:.78rem;opacity:.85;line-height:1.3}
+.bar .wa{flex:none;padding:12px 16px;font-size:1rem;border-radius:12px}
+/* dias: rótulo livre/ocupado e risco evidente */
+.d{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.dn{font-size:1rem;line-height:1.05}
+.dl{font-size:.56rem;font-weight:700;letter-spacing:.01em;line-height:1;opacity:.8}
+.d.busy{text-decoration:none;color:var(--busy-ink);background:var(--no-bg)}
+.d.busy .dn{text-decoration:line-through;text-decoration-color:var(--no);text-decoration-thickness:2.5px}
+.d.busy .dl{opacity:1;font-size:.5rem;letter-spacing:-.01em}
+.d .hol{top:4px;right:4px;bottom:auto;left:auto;margin:0;width:6px;height:6px}
+.sw-no{background:linear-gradient(transparent calc(50% - 1px),var(--no) calc(50% - 1px),var(--no) calc(50% + 1px),transparent calc(50% + 1px)),var(--no-bg)}
+</style>
+</head>
+<body>
+
+
+<div class="app">
+  <header class="brand">
+    <img src="logo.png" alt="Logo do Sítio Pedra dos Ventos">
+    <div class="bt">
+      <h1>Sítio Pedra dos Ventos</h1>
+      <p>Domingos Martins · Montanhas Capixabas</p>
+    </div>
+  </header>
+
+  <section class="card ppl" aria-label="Quantas pessoas">
+    <div class="pc"><span>Adultos</span>
+      <div class="step"><button id="a-menos" aria-label="Menos um adulto">−</button><output id="a">2</output><button id="a-mais" aria-label="Mais um adulto">+</button></div></div>
+    <div class="pc"><span>Crianças até 6</span>
+      <div class="step"><button id="c-menos" aria-label="Menos uma criança até 6 anos">−</button><output id="c">0</output><button id="c-mais" aria-label="Mais uma criança até 6 anos">+</button></div></div>
+    <div class="pc"><span>Acima de 6</span>
+      <div class="step"><button id="k-menos" aria-label="Menos uma criança acima de 6 anos">−</button><output id="k">0</output><button id="k-mais" aria-label="Mais uma criança acima de 6 anos">+</button></div></div>
+    <p class="pnote">1 criança até 6 anos não paga, dormindo na suíte com os pais</p>
+  </section>
+
+  <section class="card cal" aria-labelledby="mtitle">
+    <div class="cal-head">
+      <button class="nav" id="prev" aria-label="Mês anterior">‹</button>
+      <h2 id="mtitle" aria-live="polite"></h2>
+      <button class="nav" id="next" aria-label="Próximo mês">›</button>
+    </div>
+    <div class="wk"><div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div></div>
+    <div class="grid" id="grid"></div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--sage-soft);box-shadow:inset 0 0 0 2px var(--forest)"></i><span id="lg-ring">Pode entrar</span></span>
+      <span><i class="sw sw-no"></i>Reservado</span>
+      <span><i class="sw" style="background:var(--teal);border-radius:50%;width:8px;height:8px"></i>Feriado</span>
+    </div>
+    <p class="hint" id="hint" aria-live="polite">Toque no dia de entrada.</p>
+  </section>
+
+  <section class="card" aria-labelledby="l-tab">
+    <p class="label" id="l-tab">Valores e regras</p>
+    <h2 class="tblh">Meio de semana</h2>
+    <p class="tbls">Noites de segunda, terça e quarta · 2 ou 3 diárias com desconto</p>
+    <div class="tw"><table class="t3"><tr><th></th><th>1 diária</th><th>2 diárias</th><th>3 diárias</th></tr>
+    <tr><td>Até 2 pessoas</td><td>R$ 548</td><td>R$ 998</td><td>R$ 1.478</td></tr>
+    <tr><td>Até 4 pessoas</td><td>R$ 698</td><td>R$ 1.258</td><td>R$ 1.878</td></tr>
+    <tr><td>Até 6 pessoas</td><td>R$ 848</td><td>R$ 1.528</td><td>R$ 2.288</td></tr></table></div>
+    <h2 class="tblh">Fim de semana</h2>
+    <p class="tbls">Noites de sexta, sábado e domingo · mínimo de 2 diárias · valores para 2 diárias</p>
+    <table><tr><td>Casal</td><td>R$ 1.498</td></tr><tr><td>Até 4 pessoas</td><td>R$ 1.698</td></tr><tr><td>Até 6 pessoas</td><td>R$ 1.798</td></tr></table>
+    <ul class="rules">
+      <li>Entrada a partir das 16h · saída até 12h</li>
+      <li>Quinta-feira: apenas saída</li>
+      <li>Entrada no domingo: mínimo de 2 diárias, quando o sábado anterior estiver livre; a noite de domingo tem valor de fim de semana</li>
+      <li>Desconto de meio de semana não vale para noites de fim de semana</li>
+      <li>1 criança até 6 anos não paga, dormindo na suíte com os pais; demais crianças contam como pessoa</li>
+      <li>Máximo de 6 pessoas, incluindo crianças · 2 quartos com ar-condicionado</li>
+      <li>Menores de idade somente acompanhados dos pais ou responsáveis</li>
+      <li>Crianças na piscina somente com supervisão de um adulto</li>
+      <li>Feriados e feriados prolongados: valor sob consulta</li>
+    </ul>
+    <div class="phone">WhatsApp <span id="num">(27) 99846-1289</span><button class="copy" id="copy">Copiar</button></div>
+  </section>
+
+  <p class="foot" id="foot"></p>
+</div>
+
+<div class="bar" aria-live="polite">
+  <div class="bi">
+    <div class="info"><p class="price" id="price"></p><p class="when" id="when"></p></div>
+    <a class="wa" id="wa" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg>
+      <span id="walabel">Reservar</span>
+    </a>
+  </div>
+</div>
+
+<script>
+function iniciar(DATA){
+const PHONE="5527998461289";
+const MONTHS=["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+const WD=["dom","seg","ter","qua","qui","sex","sáb"];
+const WEEK=[548,698,848], WKND=[749,849,899], DISC2=[998,1258,1528], DISC3=[1478,1878,2288];
+const busy=new Set(DATA.busy||[]);
+const hol=DATA.holidays||{};
+const pad=n=>String(n).padStart(2,"0");
+const iso=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const parse=s=>{const[y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)};
+const add=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+const fmt=d=>WD[d.getDay()]+" "+pad(d.getDate())+"/"+pad(d.getMonth()+1);
+const brl=v=>"R$ "+v.toLocaleString("pt-BR");
+const now=new Date(); const today=iso(now);
+const [sy,sm]=(DATA.start||"2026-10").split("-").map(Number);
+const [ey,em]=(DATA.end||"2027-12").split("-").map(Number);
+const minM=new Date(Math.max(new Date(sy,sm-1,1),new Date(now.getFullYear(),now.getMonth(),1)));
+const maxM=new Date(ey,em-1,1);
+const lastDay=new Date(ey,em,0);
+const st={a:2,c:0,k:0,ci:null,co:null,view:new Date(minM)};
+
+const free=d=>!busy.has(iso(d))&&iso(d)>=today&&d<=lastDay;
+function canCheckIn(d){
+  const w=d.getDay();
+  if(w===4||!free(d)) return false;
+  if(w===0) return free(add(d,1)) && !busy.has(iso(add(d,-1)));
+  if(w===5||w===6) return free(add(d,1)) && add(d,1).getDay()!==4;
+  return true;
+}
+function nightsOf(ci,co){const r=[];for(let d=new Date(ci);d<co;d=add(d,1)) r.push(new Date(d));return r}
+function minNights(ci,co){
+  const ns=nightsOf(ci,co);
+  return (ci.getDay()===0||ns.some(n=>n.getDay()===5||n.getDay()===6))?2:1;
+}
+function checkoutProblem(ci,co){
+  if(co<=ci) return "A saída precisa ser depois da entrada.";
+  const ns=nightsOf(ci,co);
+  if(ns.some(n=>n.getDay()===4)) return "Não temos diária na noite de quinta. A saída pode ser até quinta às 12h.";
+  if(ns.some(n=>!free(n))) return "Há dias ocupados nesse período. Escolha uma saída antes da próxima reserva.";
+  if(ns.length<minNights(ci,co)) return "Estadias que incluem sexta, sábado ou entrada no domingo têm mínimo de 2 diárias.";
+  return null;
+}
+function tier(){const t=st.a+st.k+Math.max(0,st.c-1);return t<=2?0:t<=4?1:2}
+function quote(ci,co){
+  const ns=nightsOf(ci,co), t=tier(); let wk=0, we=0;
+  for(const n of ns){const w=n.getDay(); if(w===5||w===6||w===0) we++; else wk++}
+  const full=we*WKND[t]+wk*WEEK[t];
+  const wkPrice=wk===2?DISC2[t]:wk===3?DISC3[t]:wk*WEEK[t];
+  const total=we*WKND[t]+wkPrice;
+  return {total,full,wk,we,n:ns.length};
+}
+function holidayIn(ci,co){
+  for(let d=new Date(ci);d<co;d=add(d,1)){const h=hol[iso(d)]||hol[iso(add(d,1))];if(h) return h}
+  return null;
+}
+
+const grid=document.getElementById("grid"), hint=document.getElementById("hint");
+function setHint(t,warn){hint.textContent=t;hint.className="hint"+(warn?" warn":"")}
+function render(){
+  const v=st.view, y=v.getFullYear(), m=v.getMonth();
+  document.getElementById("mtitle").textContent=MONTHS[m]+" "+y;
+  document.getElementById("prev").disabled=v<=minM;
+  document.getElementById("next").disabled=v>=maxM;
+  document.getElementById("lg-ring").textContent=(st.ci&&!st.co)?"Pode sair":"Pode entrar";
+  const ciK=st.ci&&iso(st.ci), coK=st.co&&iso(st.co);
+  const first=new Date(y,m,1).getDay(), n=new Date(y,m+1,0).getDate();
+  let html="";
+  for(let i=0;i<first;i++) html+='<span class="d empty" aria-hidden="true"></span>';
+  for(let day=1;day<=n;day++){
+    const d=new Date(y,m,day), k=iso(d), h=hol[k];
+    let cls="d", label=day+" de "+MONTHS[m];
+    if(k<today){cls+=" past";label+=", já passou"}
+    else if(busy.has(k)&&!(st.ci&&!st.co&&!checkoutProblem(st.ci,d))){cls+=" busy";label+=", ocupado"}
+    else{
+      cls+=" free";label+=", livre";
+      const ring=(st.ci&&!st.co)?!checkoutProblem(st.ci,d):canCheckIn(d);
+      if(ring){cls+=" start";label+=(st.ci&&!st.co)?", pode sair":", pode entrar"}
+      if(d.getDay()===4) label+=", quinta só saída";
+    }
+    if(ciK&&(k===ciK||(coK&&k>ciK&&k<coK))) cls+=" sel";
+    if(coK&&k===coK) cls+=" out";
+    if(h) label+=", feriado: "+h;
+    const lbl=cls.includes(" busy")?"reservado":cls.includes(" free")?"livre":"";
+    html+=`<button class="${cls}" data-d="${k}" aria-label="${label}"${h?` title="${h}"`:""}><span class="dn">${day}</span>${lbl?`<span class="dl">${lbl}</span>`:""}${h?'<i class="hol"></i>':""}</button>`;
+  }
+  grid.innerHTML=html;
+  renderSum();
+}
+grid.addEventListener("click",e=>{
+  const b=e.target.closest("button.d"); if(!b||b.classList.contains("past")) return;
+  const d=parse(b.dataset.d);
+  if(st.ci&&!st.co&&d>st.ci){
+    const p=checkoutProblem(st.ci,d);
+    if(!p){st.co=d;setHint("Datas escolhidas. Toque em outro dia para recomeçar.");render();return}
+    if(p.startsWith("Estadias")||!canCheckIn(d)){setHint(p+" Para trocar a entrada, toque num dia antes dela.",true);return}
+  }
+  if(b.classList.contains("busy")) return;
+  if(canCheckIn(d)){st.ci=d;st.co=null;setHint("Agora toque no dia de saída.");}
+  else{
+    const w=d.getDay();
+    setHint(w===4?"Quinta-feira é só dia de saída. Escolha outro dia de entrada."
+      :w===0?"Entrada no domingo só com 2 diárias e com o sábado anterior livre."
+      :"Esse dia não tem 2 diárias livres em sequência. Escolha outra entrada ou fale com a gente.",true);
+  }
+  render();
+});
+function renderSum(){
+  const when=document.getElementById("when"), pr=document.getElementById("price");
+  const tot=st.a+st.c+st.k, kids=[]; if(st.c) kids.push(st.c+" criança"+(st.c>1?"s":"")+" até 6 anos"); if(st.k) kids.push(st.k+" criança"+(st.k>1?"s":"")+" acima de 6 anos");
+  const ppl=st.a+" adulto"+(st.a>1?"s":"")+(kids.length?" e "+kids.join(" e "):"");
+  const short=tot+" pessoa"+(tot>1?"s":"");
+  const dm=d=>pad(d.getDate())+"/"+pad(d.getMonth()+1);
+  let msg;
+  if(!(st.ci&&st.co)){
+    pr.className="price soft";
+    pr.textContent=st.ci?"Escolha a saída":"Escolha entrada e saída";
+    when.textContent=st.ci?"Entrada "+fmt(st.ci)+" às 16h · "+short:"Toque nos dias no calendário · "+short;
+    msg="Olá! Vim pelo calendário do Sítio Pedra dos Ventos e gostaria de saber sobre disponibilidade e valores.";
+    document.getElementById("walabel").textContent="WhatsApp";
+  }else{
+    const q=quote(st.ci,st.co), h=holidayIn(st.ci,st.co);
+    const dates=fmt(st.ci)+" (16h) a "+fmt(st.co)+" (12h)";
+    const nn=q.n+" diária"+(q.n>1?"s":"");
+    when.textContent=nn+" · "+dm(st.ci)+" a "+dm(st.co)+" · "+short;
+    pr.className="price";
+    if(h){pr.innerHTML='Sob consulta';when.textContent+=" · feriado"}
+    else{pr.innerHTML=(q.full>q.total?'<s class="old">'+brl(q.full)+'</s> ':'')+brl(q.total)}
+    msg="Olá! Vim pelo calendário do Sítio Pedra dos Ventos e quero reservar:\n"
+      +"📅 "+dates+" ("+nn+")\n👥 "+ppl+"\n"
+      +(h?"💰 Gostaria de saber o valor (feriado)":"💰 Valor: "+brl(q.total)+(q.full>q.total?" (com desconto de meio de semana)":""))
+      +"\nAinda está disponível?";
+    document.getElementById("walabel").textContent="Reservar";
+  }
+  document.getElementById("wa").href="https://wa.me/"+PHONE+"?text="+encodeURIComponent(msg);
+}
+document.getElementById("prev").onclick=()=>{st.view=new Date(st.view.getFullYear(),st.view.getMonth()-1,1);render()};
+document.getElementById("next").onclick=()=>{st.view=new Date(st.view.getFullYear(),st.view.getMonth()+1,1);render()};
+function fixPeople(){
+  const tot=st.a+st.c+st.k;
+  ["a","c","k"].forEach(x=>document.getElementById(x).textContent=st[x]);
+  document.getElementById("a-menos").disabled=st.a<=1; document.getElementById("c-menos").disabled=st.c<=0; document.getElementById("k-menos").disabled=st.k<=0;
+  ["a-mais","c-mais","k-mais"].forEach(x=>document.getElementById(x).disabled=tot>=6);
+}
+[["a-menos","a",-1],["a-mais","a",1],["c-menos","c",-1],["c-mais","c",1],["k-menos","k",-1],["k-mais","k",1]].forEach(([id,k,dl])=>{
+  document.getElementById(id).onclick=()=>{st[k]+=dl;fixPeople();renderSum()};
+});
+document.getElementById("copy").onclick=async()=>{
+  const btn=document.getElementById("copy");
+  try{await navigator.clipboard.writeText("27998461289");btn.textContent="Copiado"}
+  catch(_){const r=document.createRange();r.selectNodeContents(document.getElementById("num"));const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Selecionado"}
+  setTimeout(()=>btn.textContent="Copiar",1800);
+};
+if(DATA.updated){const u=parse(DATA.updated);document.getElementById("foot").textContent="Calendário atualizado em "+pad(u.getDate())+"/"+pad(u.getMonth()+1)+"/"+u.getFullYear()+" · Sítio Pedra dos Ventos";}
+fixPeople(); render();
+}
+fetch("data.json?v="+Date.now(),{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(iniciar)
+  .catch(()=>{document.getElementById("hint").textContent="Não foi possível carregar o calendário. Recarregue a página ou fale com a gente pelo WhatsApp.";});
+</script>
+</body>
+</html>

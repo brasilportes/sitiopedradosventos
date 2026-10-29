@@ -1,0 +1,61 @@
+name: Atualizar agenda e publicar
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 * * * *"   # a cada hora (horário UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: agenda
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Ler a agenda e gerar data.json
+        env:
+          ICAL_URL: ${{ secrets.ICAL_URL }}
+        run: python scripts/atualizar_agenda.py
+
+      - name: Salvar data.json se mudou
+        id: salvar
+        run: |
+          if git diff --quiet -- data.json; then
+            echo "mudou=nao" >> "$GITHUB_OUTPUT"
+            echo "Agenda sem mudanças."
+          else
+            git config user.name "agenda-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data.json
+            git commit -m "Atualiza agenda"
+            git push
+            echo "mudou=sim" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Preparar arquivos do site
+        if: github.event_name != 'schedule' || steps.salvar.outputs.mudou == 'sim'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publicar no GitHub Pages
+        id: deploy
+        if: github.event_name != 'schedule' || steps.salvar.outputs.mudou == 'sim'
+        uses: actions/deploy-pages@v4

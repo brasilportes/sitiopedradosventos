@@ -132,9 +132,16 @@ section.bloco{padding-block:88px}
 
 /* avaliações */
 .avaliacoes{background:var(--floresta);color:#F4EFE2}
-.avaliacoes .wrap{padding-block:72px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px}
+.avaliacoes .wrap{padding-block:80px;display:flex;flex-direction:column;gap:36px}
+.av-topo{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
+.deps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.dep{margin:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.dep .estrelas{color:var(--mostarda);letter-spacing:3px;font-size:1.05rem}
+.dep blockquote{margin:0;font-family:var(--display);font-style:italic;font-size:1.12rem;line-height:1.55;color:#fff}
+.dep figcaption{font-size:.92rem;color:#D8E2D2;margin-top:auto}
+.dep figcaption b{color:var(--mostarda)}
+@media (max-width:760px){.deps{grid-template-columns:minmax(0,1fr)}}
 .avaliacoes h2{color:#fff}
-.avaliacoes p{color:#DCE6D6;margin-top:10px;max-width:520px}
 .selo{display:inline-block;background:var(--mostarda);color:var(--mostarda-tinta);font-weight:800;font-size:.85rem;padding:6px 12px;border-radius:999px;margin-bottom:14px}
 .avaliacoes .acoes .btn-contorno{border-color:#fff;color:#fff}
 
@@ -351,14 +358,37 @@ dialog::backdrop{background:rgba(10,14,9,.92)}
 
 <section class="avaliacoes">
   <div class="wrap">
-    <div>
-      <span class="selo">Superhost no Airbnb</span>
-      <h2>O que dizem os hóspedes</h2>
-      <p>Veja as avaliações de quem já se hospedou no sítio.</p>
+    <div class="av-topo">
+      <div>
+        <span class="selo">Superhost no Airbnb · 5 estrelas no Google</span>
+        <h2>O que dizem os hóspedes</h2>
+      </div>
+      <div class="acoes">
+        <a class="btn btn-ver" href="https://share.google/pGx4l0bnFDAUjGmm7" target="_blank" rel="noopener">Mais avaliações no Google</a>
+        <a class="btn btn-contorno" href="https://airbnb.com/h/sitiopedradosventos" target="_blank" rel="noopener">Avaliações no Airbnb</a>
+      </div>
     </div>
-    <div class="acoes">
-      <a class="btn btn-ver" href="https://airbnb.com/h/sitiopedradosventos" target="_blank" rel="noopener">Avaliações no Airbnb</a>
-      <a class="btn btn-contorno" href="https://share.google/pGx4l0bnFDAUjGmm7" target="_blank" rel="noopener">Avaliações no Google</a>
+    <div class="deps">
+      <figure class="dep">
+        <p class="estrelas" aria-label="5 de 5 estrelas">★★★★★</p>
+        <blockquote>O que falar sobre o Sítio Pedra dos Ventos? Sem palavras para expressar tamanha beleza, um lugar tranquilo, seguro e um ótimo lugar para passar com a família, fomos muito bem recepcionados pelos anfitriões, Sheyla Brasil e Alex, esse foi o nosso 4 retorno, amamos estar com vcs, voltaremos em breve, super recomendo!</blockquote>
+        <figcaption><b>Jane C.</b> · avaliação no Google</figcaption>
+      </figure>
+      <figure class="dep">
+        <p class="estrelas" aria-label="5 de 5 estrelas">★★★★★</p>
+        <blockquote>Lugar maravilhoso, ambiente familiar, muita paz, vista linda, casa confortável e bem limpa, roupas de cama e banho impecável, o anfitrião muito atencioso. Quem vai não se arrepende!!</blockquote>
+        <figcaption><b>Graça B.</b> · avaliação no Google</figcaption>
+      </figure>
+      <figure class="dep">
+        <p class="estrelas" aria-label="5 de 5 estrelas">★★★★★</p>
+        <blockquote>Um lugar lindo, sensacional! Maravilhoso pra descansar e curtir um visual encantador. Atendimento perfeito com muito capricho e atenção! Não é a toa que sempre retornamos.</blockquote>
+        <figcaption><b>Jaqueline S.</b> · avaliação no Google</figcaption>
+      </figure>
+      <figure class="dep">
+        <p class="estrelas" aria-label="5 de 5 estrelas">★★★★★</p>
+        <blockquote>Tivemos uma experiência incrível no sítio! O lugar é simplesmente maravilhoso, super bem cuidado, limpo e com uma energia excelente. É o ambiente perfeito para quem busca descansar, se conectar com a natureza ou curtir bons momentos com a família e amigos.</blockquote>
+        <figcaption><b>Carla C.</b> · avaliação no Google</figcaption>
+      </figure>
     </div>
   </div>
 </section>

@@ -155,5 +155,22 @@ def main():
     print(f"{len(busy)} dias ocupados gravados (de {desde} até {fim_ano}).")
 
 
+# Atalhos com contagem própria no painel de visitas: /bio e /story abrem o mesmo
+# calendário, mas aparecem como páginas separadas. São gerados a cada publicação
+# a partir de reservas/index.html, para nunca ficarem desatualizados.
+ATALHOS = {"bio": "instagram", "story": "story"}
+
+
+def gerar_atalhos():
+    base = (RAIZ / "reservas" / "index.html").read_text(encoding="utf-8")
+    for pasta, origem in ATALHOS.items():
+        html = base.replace("<head>", f'<head>\n<meta name="origem-padrao" content="{origem}">', 1)
+        destino = RAIZ / pasta
+        destino.mkdir(exist_ok=True)
+        (destino / "index.html").write_text(html, encoding="utf-8")
+    print("Atalhos gerados:", ", ".join("/" + p for p in ATALHOS))
+
+
 if __name__ == "__main__":
     main()
+    gerar_atalhos()

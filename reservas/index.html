@@ -181,7 +181,7 @@ body{padding-block:12px 120px}
 /* Origem da visita: ?origem=instagram, ?origem=story, ?origem=google... (ou o utm_source que o Instagram coloca sozinho). Guardada só nesta aba. */
 window.ORIGEM=(function(){
   var N={instagram:"Instagram",ig:"Instagram",bio:"Instagram",story:"story do Instagram",stories:"story do Instagram",google:"Google",maps:"Google Maps",whatsapp:"WhatsApp",wa:"WhatsApp",facebook:"Facebook",fb:"Facebook",airbnb:"Airbnb",site:"site"};
-  var q=new URLSearchParams(location.search), v=(q.get("origem")||q.get("utm_source")||"").toLowerCase().trim(), nome="";
+  var q=new URLSearchParams(location.search), m=document.querySelector('meta[name="origem-padrao"]'), v=(q.get("origem")||(m&&m.content)||q.get("utm_source")||"").toLowerCase().trim(), nome="";
   if(v) nome=N[v]||v.charAt(0).toUpperCase()+v.slice(1);
   if(!nome){var r=document.referrer||"";
     if(/instagram\.com/.test(r))nome="Instagram";else if(/google\./.test(r))nome="Google";else if(/facebook\.com|fb\.com/.test(r))nome="Facebook";else if(/whatsapp|wa\.me/.test(r))nome="WhatsApp";}

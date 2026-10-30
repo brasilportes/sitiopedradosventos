@@ -147,7 +147,13 @@ body{padding-block:12px 120px}
 .pc .step output{font-size:1.05rem}
 .cal-head{margin-bottom:6px}
 .cal-head h2{font-size:1.15rem}
-.nav{width:36px;height:36px}
+.nav{width:44px;height:44px;border-radius:999px;border:0;background:var(--forest);color:var(--on-forest);font-size:1.6rem;font-weight:800;line-height:1;display:inline-flex;align-items:center;justify-content:center;gap:4px;cursor:pointer;box-shadow:0 2px 8px rgba(30,46,28,.22)}
+.nav:hover{filter:brightness(1.12)}
+.nav#next{width:auto;padding:0 14px 0 18px;font-size:1rem}
+.nav#next span{font-size:1.6rem;line-height:1;margin-top:-2px}
+.nav:disabled{background:var(--busy);color:var(--busy-ink);box-shadow:none;opacity:1;cursor:default}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .nav{background:var(--sage);color:var(--sage-ink)}}
+:root[data-theme="dark"] .nav{background:var(--sage);color:var(--sage-ink)}
 .wk,.grid{gap:4px}
 .d{aspect-ratio:1.18;font-size:.95rem;border-radius:9px}
 .d .hol{bottom:3px}
@@ -216,7 +222,7 @@ window.ORIGEM=(function(){
     <div class="cal-head">
       <button class="nav" id="prev" aria-label="Mês anterior">‹</button>
       <h2 id="mtitle" aria-live="polite"></h2>
-      <button class="nav" id="next" aria-label="Próximo mês">›</button>
+      <button class="nav" id="next" aria-label="Próximo mês">Próximo <span aria-hidden="true">›</span></button>
     </div>
     <div class="wk"><div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div></div>
     <div class="grid" id="grid"></div>

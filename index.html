@@ -206,6 +206,18 @@ dialog::backdrop{background:rgba(10,14,9,.92)}
   footer{padding-bottom:96px}
 }
 </style>
+<script>
+/* Origem da visita: ?origem=instagram, ?origem=story, ?origem=google... (ou o utm_source que o Instagram coloca sozinho). Guardada só nesta aba. */
+window.ORIGEM=(function(){
+  var N={instagram:"Instagram",ig:"Instagram",bio:"Instagram",story:"story do Instagram",stories:"story do Instagram",google:"Google",maps:"Google Maps",whatsapp:"WhatsApp",wa:"WhatsApp",facebook:"Facebook",fb:"Facebook",airbnb:"Airbnb",site:"site"};
+  var q=new URLSearchParams(location.search), v=(q.get("origem")||q.get("utm_source")||"").toLowerCase().trim(), nome="";
+  if(v) nome=N[v]||v.charAt(0).toUpperCase()+v.slice(1);
+  if(!nome){var r=document.referrer||"";
+    if(/instagram\.com/.test(r))nome="Instagram";else if(/google\./.test(r))nome="Google";else if(/facebook\.com|fb\.com/.test(r))nome="Facebook";else if(/whatsapp|wa\.me/.test(r))nome="WhatsApp";}
+  try{ if(nome) sessionStorage.setItem("origem",nome); else nome=sessionStorage.getItem("origem")||""; }catch(e){}
+  return nome;
+})();
+</script>
 </head>
 <body>
 
@@ -454,7 +466,9 @@ dialog::backdrop{background:rgba(10,14,9,.92)}
 
 <script>
 (function(){
-  var msg="Olá! Vim pelo site do Sítio Pedra dos Ventos e gostaria de saber sobre disponibilidade e valores.";
+  var msg="Olá! Vim pelo site do Sítio Pedra dos Ventos"+(window.ORIGEM?" (pelo "+window.ORIGEM+")":"")+" e gostaria de saber sobre disponibilidade e valores.";
+  var qs=new URLSearchParams(location.search), o=qs.get("origem")||qs.get("utm_source");
+  if(o) document.querySelectorAll('a[href="reservas/"]').forEach(function(a){a.href="reservas/?origem="+encodeURIComponent(o)});
   document.querySelectorAll("a.wa").forEach(function(a){a.href="https://wa.me/5527998461289?text="+encodeURIComponent(msg)});
   document.getElementById("ano").textContent=new Date().getFullYear();
 

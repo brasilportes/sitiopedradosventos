@@ -177,6 +177,18 @@ body{padding-block:12px 120px}
 .d .hol{top:4px;right:4px;bottom:auto;left:auto;margin:0;width:6px;height:6px}
 .sw-no{background:linear-gradient(transparent calc(50% - 1px),var(--no) calc(50% - 1px),var(--no) calc(50% + 1px),transparent calc(50% + 1px)),var(--no-bg)}
 </style>
+<script>
+/* Origem da visita: ?origem=instagram, ?origem=story, ?origem=google... (ou o utm_source que o Instagram coloca sozinho). Guardada só nesta aba. */
+window.ORIGEM=(function(){
+  var N={instagram:"Instagram",ig:"Instagram",bio:"Instagram",story:"story do Instagram",stories:"story do Instagram",google:"Google",maps:"Google Maps",whatsapp:"WhatsApp",wa:"WhatsApp",facebook:"Facebook",fb:"Facebook",airbnb:"Airbnb",site:"site"};
+  var q=new URLSearchParams(location.search), v=(q.get("origem")||q.get("utm_source")||"").toLowerCase().trim(), nome="";
+  if(v) nome=N[v]||v.charAt(0).toUpperCase()+v.slice(1);
+  if(!nome){var r=document.referrer||"";
+    if(/instagram\.com/.test(r))nome="Instagram";else if(/google\./.test(r))nome="Google";else if(/facebook\.com|fb\.com/.test(r))nome="Facebook";else if(/whatsapp|wa\.me/.test(r))nome="WhatsApp";}
+  try{ if(nome) sessionStorage.setItem("origem",nome); else nome=sessionStorage.getItem("origem")||""; }catch(e){}
+  return nome;
+})();
+</script>
 </head>
 <body>
 
@@ -372,7 +384,7 @@ function renderSum(){
     pr.className="price soft";
     pr.textContent=st.ci?"Escolha a saída":"Escolha entrada e saída";
     when.textContent=st.ci?"Entrada "+fmt(st.ci)+" às 16h · "+short:"Toque nos dias no calendário · "+short;
-    msg="Olá! Vim pelo calendário do Sítio Pedra dos Ventos e gostaria de saber sobre disponibilidade e valores.";
+    msg="Olá! Vim pelo calendário do Sítio Pedra dos Ventos"+(window.ORIGEM?" (pelo "+window.ORIGEM+")":"")+" e gostaria de saber sobre disponibilidade e valores.";
     document.getElementById("walabel").textContent="WhatsApp";
   }else{
     const q=quote(st.ci,st.co), h=holidayIn(st.ci,st.co);
@@ -382,7 +394,7 @@ function renderSum(){
     pr.className="price";
     if(h){pr.innerHTML='Sob consulta';when.textContent+=" · feriado"}
     else{pr.innerHTML=(q.full>q.total?'<s class="old">'+brl(q.full)+'</s> ':'')+brl(q.total)}
-    msg="Olá! Vim pelo calendário do Sítio Pedra dos Ventos e quero reservar:\n"
+    msg="Olá! Vim pelo calendário do Sítio Pedra dos Ventos"+(window.ORIGEM?" (pelo "+window.ORIGEM+")":"")+" e quero reservar:\n"
       +"📅 "+dates+" ("+nn+")\n👥 "+ppl+"\n"
       +(h?"💰 Gostaria de saber o valor (feriado)":"💰 Valor: "+brl(q.total)+(q.full>q.total?" (com desconto de meio de semana)":""))
       +"\nAinda está disponível?";

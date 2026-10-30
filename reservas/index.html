@@ -425,5 +425,6 @@ fixPeople(); render();
 fetch("../data.json?v="+Date.now(),{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(iniciar)
   .catch(()=>{document.getElementById("hint").textContent="Não foi possível carregar o calendário. Recarregue a página ou fale com a gente pelo WhatsApp.";});
 </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3089c5a158984883b4595b14e5af9ff9"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

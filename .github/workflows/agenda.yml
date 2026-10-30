@@ -59,3 +59,5 @@ jobs:
         id: deploy
         if: github.event_name != 'schedule' || steps.salvar.outputs.mudou == 'sim'
         uses: actions/deploy-pages@v4
+        with:
+          timeout: 1200000

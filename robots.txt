@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sitiopedradosventos.com.br/sitemap.xml

@@ -2,14 +2,17 @@
 
 Página de disponibilidade e reservas do Sítio Pedra dos Ventos (Domingos Martins, ES).
 
-- **Página:** https://brasilportes.github.io/sitiopedradosventos/
+- **Site:** https://sitiopedradosventos.com.br/ (`index.html`, fotos em `img/`)
+- **Calendário de reservas:** https://sitiopedradosventos.com.br/reservas/ (`reservas/index.html`)
 - O hóspede escolhe entrada e saída, vê o valor na hora e reserva pelo WhatsApp.
 
 ## Como funciona
 
 | Arquivo | Para que serve |
 |---|---|
-| `index.html` | A página (visual, preços e regras) |
+| `index.html` | O site do sítio |
+| `reservas/index.html` | O calendário de reservas (preços e regras) |
+| `img/` | Fotos do site: `nome.jpg` na resolução original e `nome-p.jpg` menor, para a grade |
 | `data.json` | Datas ocupadas e feriados. **Gerado sozinho**, não editar à mão |
 | `config.json` | Bloqueios manuais de datas e feriados extras |
 | `scripts/atualizar_agenda.py` | Lê a agenda e gera o `data.json` |

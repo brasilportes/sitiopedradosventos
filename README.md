@@ -16,7 +16,8 @@ Página de disponibilidade e reservas do Sítio Pedra dos Ventos (Domingos Marti
 | `data.json` | Datas ocupadas e feriados. **Gerado sozinho**, não editar à mão |
 | `config.json` | Bloqueios manuais de datas e feriados extras |
 | `scripts/atualizar_agenda.py` | Lê a agenda e gera o `data.json` |
-| `.github/workflows/agenda.yml` | Roda a atualização a cada hora e publica a página |
+| `.github/workflows/agenda.yml` | Roda a atualização a cada 30 min e publica a página |
+| `scripts/atualizar_cliques.py` + `.github/workflows/cliques.yml` | A cada hora busca as visitas no Cloudflare Web Analytics e salva em `estatisticas/cliques.json` (segredos **CF_API_TOKEN** e **CF_ACCOUNT_ID**) |
 
 A agenda é lida pelo link iCal secreto guardado no segredo **ICAL_URL**
 (Settings → Secrets and variables → Actions). O link nunca fica nos arquivos,

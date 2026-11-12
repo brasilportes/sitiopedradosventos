@@ -1,0 +1,43 @@
+name: Atualizar cliques (Cloudflare)
+
+on:
+  schedule:
+    - cron: "5 * * * *"   # a cada hora
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: agenda          # mesma fila da agenda, para os commits não se atropelarem
+  cancel-in-progress: false
+
+jobs:
+  cliques:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Buscar visitas na Cloudflare
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: python scripts/atualizar_cliques.py
+
+      - name: Salvar se mudou
+        run: |
+          git add -N estatisticas 2>/dev/null || true
+          if git diff --quiet -- estatisticas; then
+            echo "Sem mudanças."
+          else
+            git config user.name "agenda-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add estatisticas
+            git commit -m "Atualiza cliques"
+            git pull --rebase origin main
+            git push
+          fi

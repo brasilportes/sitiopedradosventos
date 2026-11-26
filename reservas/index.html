@@ -251,7 +251,6 @@ window.ORIGEM=(function(){
     <table><tr><td>Casal</td><td>R$ 1.498</td></tr><tr><td>Até 4 pessoas</td><td>R$ 1.698</td></tr><tr><td>Até 6 pessoas</td><td>R$ 1.798</td></tr></table>
     <ul class="rules">
       <li>Entrada a partir das 16h · saída até 12h</li>
-      <li>Quinta-feira: apenas saída</li>
       <li>Entrada no domingo: mínimo de 2 diárias, quando o sábado anterior estiver livre; a noite de domingo tem valor de fim de semana</li>
       <li>Desconto de meio de semana não vale para noites de fim de semana</li>
       <li>1 criança até 6 anos não paga, dormindo na suíte com os pais; demais crianças contam como pessoa</li>
@@ -301,7 +300,7 @@ const st={a:2,c:0,k:0,ci:null,co:null,view:new Date(minM)};
 const free=d=>!busy.has(iso(d))&&iso(d)>=today&&d<=lastDay;
 function canCheckIn(d){
   const w=d.getDay();
-  if(w===4||!free(d)) return false;
+  if(!free(d)) return false;
   if(w===0) return free(add(d,1)) && !busy.has(iso(add(d,-1)));
   if(w===5||w===6) return free(add(d,1)) && add(d,1).getDay()!==4;
   return true;
@@ -314,7 +313,6 @@ function minNights(ci,co){
 function checkoutProblem(ci,co){
   if(co<=ci) return "A saída precisa ser depois da entrada.";
   const ns=nightsOf(ci,co);
-  if(ns.some(n=>n.getDay()===4)) return "Não temos diária na noite de quinta. A saída pode ser até quinta às 12h.";
   if(ns.some(n=>!free(n))) return "Há dias ocupados nesse período. Escolha uma saída antes da próxima reserva.";
   if(ns.length<minNights(ci,co)) return "Estadias que incluem sexta, sábado ou entrada no domingo têm mínimo de 2 diárias.";
   return null;
@@ -354,7 +352,6 @@ function render(){
       cls+=" free";label+=", livre";
       const ring=(st.ci&&!st.co)?!checkoutProblem(st.ci,d):canCheckIn(d);
       if(ring){cls+=" start";label+=(st.ci&&!st.co)?", pode sair":", pode entrar"}
-      if(d.getDay()===4) label+=", quinta só saída";
     }
     if(ciK&&(k===ciK||(coK&&k>ciK&&k<coK))) cls+=" sel";
     if(coK&&k===coK) cls+=" out";
@@ -377,8 +374,7 @@ grid.addEventListener("click",e=>{
   if(canCheckIn(d)){st.ci=d;st.co=null;setHint("Agora toque no dia de saída.");}
   else{
     const w=d.getDay();
-    setHint(w===4?"Quinta-feira é só dia de saída. Escolha outro dia de entrada."
-      :w===0?"Entrada no domingo só com 2 diárias e com o sábado anterior livre."
+    setHint(w===0?"Entrada no domingo só com 2 diárias e com o sábado anterior livre."
       :"Esse dia não tem 2 diárias livres em sequência. Escolha outra entrada ou fale com a gente.",true);
   }
   render();
